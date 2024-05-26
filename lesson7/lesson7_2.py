@@ -13,12 +13,12 @@ while(True):
     count += 1
     if keyin == target:
        print(f"賓果!猜對了, 答案是:{keyin}")
-       print("您猜了{count}次")
+       print(f"您猜了{count}次")
        break
     elif(keyin > target):
        print("再小一點")
-       print("您已猜了{count}次")
+       print(f"您已猜了{count}次")
     elif (keyin < target):
        print("再大一點")
-       print("您已猜了{count}次")
+       print(f"您已猜了{count}次")
 print("遊戲結束")
