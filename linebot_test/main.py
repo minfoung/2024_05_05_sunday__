@@ -14,7 +14,17 @@ handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 
 @app.route("/")
 def index():
-    return "<h1>LineBot的webhook</h1>"
+    return "<h1>LineBot的webhook的程式</h1>"
+
+@app.route("/gemini/<prompt>")
+def gemini(prompt):
+    genai.configure(api_key=os.environ['Gemini_API_KEY'])
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    response = model.generate_content(prompt)
+    content = ""
+    for oneline in str(response.text).split('\n'):
+        content += f'<p>{oneline}</p>'
+    return content
 
 @app.route("/callback", methods=['POST'])
 def callback():
